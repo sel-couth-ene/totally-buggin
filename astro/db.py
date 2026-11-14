@@ -4,10 +4,30 @@ from __future__ import annotations
 import json
 import os
 import sqlite3
+import tempfile
 from pathlib import Path
 
-DB_PATH = Path(os.environ.get("ASTRO_DB") or
-               Path(__file__).resolve().parents[1] / "instance" / "astro_health.db")
+
+def _default_db_path() -> Path:
+    """instance/astro_health.db next to the code, unless that folder can't be written to.
+
+    Serverless hosts (Vercel, AWS Lambda) only allow writing to /tmp, so the database goes there
+    instead. ASTRO_DB always wins."""
+    if os.environ.get("ASTRO_DB"):
+        return Path(os.environ["ASTRO_DB"])
+    local = Path(__file__).resolve().parents[1] / "instance"
+    serverless = os.environ.get("VERCEL") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME")
+    if not serverless:
+        try:
+            local.mkdir(parents=True, exist_ok=True)
+            if os.access(local, os.W_OK):
+                return local / "astro_health.db"
+        except OSError:
+            pass
+    return Path(tempfile.gettempdir()) / "astro_health.db"
+
+
+DB_PATH = _default_db_path()
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT);
