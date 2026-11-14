@@ -2,5 +2,5 @@ instance/
 __pycache__/
 *.pyc
 .venv/
-static/models/*.task
-data/raw/          # raw downloads (e.g. tools/mmash_import.py --download); only the derived JSON is kept
+# raw downloads (e.g. tools/mmash_import.py --download); only the derived JSON is kept
+data/raw/
