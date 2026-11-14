@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crew health check</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/static/vendor/fonts/fonts.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+  <script type="importmap">{ "imports": { "three": "/static/vendor/three.module.js" } }</script>
+</head>
+<body>
+  <div id="stage">
+    <video id="video" playsinline muted></video>
+    <div id="no-camera" hidden></div>
+    <canvas id="skeleton"></canvas>
+    <canvas id="three"></canvas>
+    <canvas id="pets"></canvas>
+  </div>
+
+  <header id="topbar" class="card">
+    <div class="who">
+      <label class="visually-hidden" for="crew-select">Crew member</label>
+      <select id="crew-select"></select>
+      <span id="who-role"></span>
+    </div>
+    <div class="clock">
+      <span id="clock">Day 141, 10:00</span>
+      <span id="live" class="live" data-state="on"><i aria-hidden="true"></i><b>LIVE</b> <span id="live-text">Connecting</span></span>
+      <span id="ticker" aria-live="polite"></span>
+    </div>
+    <div class="actions">
+      <span id="points" class="points"><b>0</b> points</span>
+      <button class="btn" data-dwell id="btn-checkin">Daily check-in</button>
+      <button class="btn" data-dwell id="btn-shop">Shop</button>
+      <button class="btn quiet" data-dwell id="btn-devices">Devices</button>
+      <button class="btn quiet" id="btn-skip" title="Move the mission clock forward 6 hours">Skip 6 h</button>
+    </div>
+  </header>
+
+  <div id="badges" aria-label="Warnings on the body"></div>
+
+  <nav id="rail" class="card" aria-label="Body regions">
+    <h2>Body check</h2>
+    <ol id="region-list"></ol>
+    <details class="legend">
+      <summary data-dwell>Gesture tips</summary>
+      <p><span class="g g-point" aria-hidden="true"></span>Point and hold to open</p>
+      <p><span class="g g-open" aria-hidden="true"></span>Open hand to turn</p>
+      <p><span class="g g-fist" aria-hidden="true"></span>Fist to close</p>
+    </details>
+  </nav>
+
+  <section id="pulse" class="pulse card" hidden aria-label="Live pulse sensor">
+    <div class="pulse-head">
+      <h3>Live pulse</h3>
+      <span class="pulse-bpm"><b id="pulse-bpm">--</b> bpm</span>
+    </div>
+    <canvas id="pulse-wave" aria-hidden="true"></canvas>
+    <dl class="pulse-vitals" aria-label="Measured from the pulse">
+      <div><dt>Resting heart rate</dt><dd id="pv-rest">--</dd></div>
+      <div><dt>Variability (HRV)</dt><dd id="pv-hrv">--</dd></div>
+      <div><dt>Breathing (est.)</dt><dd id="pv-br">--</dd></div>
+      <div><dt>Signal</dt><dd id="pv-sig">--</dd></div>
+    </dl>
+    <p id="pulse-note" class="pulse-note"></p>
+    <p id="pulse-status" class="pulse-status" aria-live="polite">Connecting…</p>
+    <div class="pulse-btns">
+      <button class="btn quiet" data-dwell id="pulse-restart" type="button">Restart</button>
+      <button class="btn quiet" data-dwell id="pulse-toggle" type="button">Stop reading</button>
+    </div>
+  </section>
+
+  <aside id="panel" class="card" hidden aria-live="polite"></aside>
+
+  <section id="recs" aria-label="Suggested actions"></section>
+
+  <div id="exercise" class="card" hidden role="dialog" aria-label="Exercise"></div>
+
+  <div id="modal-root"></div>
+  <div id="toasts" aria-live="polite"></div>
+  <div id="status-msg" hidden></div>
+
+  <canvas id="pointer"></canvas>
+  <script type="module" src="/static/js/main.js"></script>
+</body>
+</html>
