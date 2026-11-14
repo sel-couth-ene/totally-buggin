@@ -1,0 +1,34 @@
+indicator,parameter,value,unit,source,note
+heart_rate,inflight_change,0,bpm,"Norsk P et al. 2015, J Physiol 593(3):573-584",24-h heart rate unchanged in long-duration ISS flight vs pre-flight
+heart_rate,personal_sd_floor,2.5,bpm,team assumption,minimum day-to-day SD used for z-scores
+heart_rate,fixed_red_threshold,90,bpm,team assumption,"conventional 'fixed threshold' used only to show how late a fixed rule fires"
+bp_sys,inflight_change,-8,mmHg,"Norsk P et al. 2015, J Physiol 593(3):573-584",24-h mean arterial pressure fell 8 +/- 2 mmHg in flight; applied to systolic and diastolic
+bp_dia,inflight_change,-8,mmHg,"Norsk P et al. 2015, J Physiol 593(3):573-584",see bp_sys
+bp_sys,onset_tau_days,14,days,team assumption,exponential approach to the in-flight level
+bp_sys,personal_sd_floor,4,mmHg,team assumption,
+bp_dia,personal_sd_floor,3,mmHg,team assumption,
+sleep,inflight_mean,6.0,h,"Barger LK et al. 2014, Lancet Neurol 13(9):904-912",ISS astronauts averaged ~6.0 h sleep per night (actigraphy)
+sleep,reference_preflight,7.0,h,team assumption,typical pre-flight sleep the in-flight mean is compared against
+sleep,personal_offset_weight,0.5,ratio,team assumption,"half of a person's pre-flight sleep offset from 7 h carries into flight"
+sleep,personal_sd_floor,0.4,h,team assumption,
+sleep,short_night,6.0,h,team assumption,night counted as 'short' for the streak rule
+core_temp,inflight_change,1.0,degC,"Stahn AC et al. 2017, Sci Rep 7:16180",resting core body temperature rose ~1 degC over ~2.5 months on ISS
+core_temp,onset_days,75,days,"Stahn AC et al. 2017, Sci Rep 7:16180",linear rise over first ~2.5 months then plateau
+core_temp,personal_sd_floor,0.15,degC,team assumption,
+spo2,inflight_change,0,%,team assumption,ISS cabin is at sea-level pressure
+spo2,personal_sd_floor,0.8,%,team assumption,
+pvt,lapse_threshold,355,ms,"Basner M, Mollicone D, Dinges DF 2011, Acta Astronaut 69:949-959",PVT-B (3-min) lapse = response > 355 ms; basis of the ISS Reaction Self Test
+pvt,personal_sd_floor,15,ms,team assumption,
+pvt,act_now_lapses,3,count,team assumption,"3+ lapses in one test escalates a fatigue flag to ACT NOW"
+mood,personal_sd_floor,0.5,score,team assumption,1-5 tap scale
+glucose,normal_max,99,mg/dL,American Diabetes Association Standards of Care,fasting glucose normal < 100 mg/dL
+glucose,elevated_max,125,mg/dL,American Diabetes Association Standards of Care,100-125 = elevated (prediabetes range)
+bone,monthly_loss_pct,1.0,%/month,"LeBlanc A et al. 2000, J Musculoskelet Neuronal Interact 1(2):157-160",femoral neck/hip BMD loss ~1.0-1.6 %/month without modern countermeasures; lower bound used assuming ARED exercise
+bone,review_level_pct,10,%,team assumption,cumulative estimated loss that triggers a ground review
+bone,exercise_target_min,120,min/day,"NASA ISS exercise countermeasures (~2 h/day scheduled)",
+radiation,career_limit_mSv,600,mSv,"NASA-STD-3001 Vol 1 Rev B (2022)",career effective-dose limit
+radiation,iss_si_to_effective_factor,2.5,mSv per mGy(Si),team assumption,converts DOSTEL silicon absorbed dose to approx. effective dose; gives ~0.48 mSv/day which matches NASA's 80-160 mSv per 6-month ISS increment
+radiation,spe_yellow_index,1.3,ratio,team assumption,high-latitude dose rate / 27-day quiet median
+radiation,spe_red_index,1.6,ratio,team assumption,"'go to shelter' alert"
+co2,yellow_ppm,3950,ppm,"Law J et al. 2014, J Occup Environ Med 56(5):477-483",~3 mmHg; odds of crew headache roughly double per 1 mmHg CO2
+co2,red_ppm,5260,ppm,ISS flight rule 4 mmHg CO2 limit,4 mmHg at sea-level cabin pressure

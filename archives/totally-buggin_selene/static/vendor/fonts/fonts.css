@@ -1,0 +1,11 @@
+/* Local copy of Archivo from Google Fonts (SIL Open Font License 1.1), latin subset, variable
+   width (62-125%) and weight (300-800). No network needed. Characters outside latin (e.g. the
+   subscript in CO₂) fall back to the system font. */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 300 800;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(Archivo-latin.woff2) format('woff2');
+}

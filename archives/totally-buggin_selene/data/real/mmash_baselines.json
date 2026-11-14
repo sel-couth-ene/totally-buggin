@@ -1,0 +1,563 @@
+{
+ "source": "PhysioNet MMASH v1.0.0 (Open Data Commons ODbL v1.0). Rossi A, Da Pozzo E, Menicagli D, Tremolanti C, Priami C, Sirbu A, Clifton D, Martini C, Morelli D. Multilevel Monitoring of Activity and Sleep in Healthy People (version 1.0.0). PhysioNet (2020). https://doi.org/10.13026/cerq-fc86. Data paper: Rossi A et al. A public dataset of 24-h multi-levels psycho-physiological responses in young healthy adults. Data 2020, 5(4):91. Goldberger A et al. PhysioBank, PhysioToolkit, and PhysioNet. Circulation 2000, 101(23):e215-e220.",
+ "units": {
+  "rest_hr": "bpm",
+  "hrv": "ms (RMSSD)",
+  "sleep_h": "h",
+  "sleep_eff": "%",
+  "activity": "steps per 24 h",
+  "stress": "app scale 1-5 (from STAI-Y1)",
+  "mood": "app scale 1-5 (from PANAS)"
+ },
+ "notes": "One ~24 h recording per participant, so sleep values are from a single night. stress and mood are mapped to the app's 1-5 check-in scale (team assumption); raw questionnaire scores are under each participant's 'raw'. null = not available.",
+ "participants": {
+  "User_1": {
+   "rest_hr": 59.6,
+   "hrv": 76.4,
+   "sleep_h": 5.67,
+   "sleep_eff": 89.9,
+   "activity": 13864,
+   "stress": 2.4,
+   "mood": 3.56,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 2,
+    "beats_kept_pct": 97.2,
+    "actigraph_hours": 23.6,
+    "stai1": 41.0,
+    "stai2": 43.0,
+    "daily_stress_dsi": 23.0,
+    "panas_pos_mean": 17.0,
+    "panas_neg_mean": 11.4,
+    "psqi": 5.0,
+    "age": 29.0
+   }
+  },
+  "User_2": {
+   "rest_hr": 47.9,
+   "hrv": 41.5,
+   "sleep_h": 4.07,
+   "sleep_eff": 73.5,
+   "activity": 12573,
+   "stress": 1.27,
+   "mood": 4.62,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 95.9,
+    "actigraph_hours": 23.7,
+    "stai1": 24.0,
+    "stai2": 39.0,
+    "daily_stress_dsi": 26.0,
+    "panas_pos_mean": 30.6,
+    "panas_neg_mean": 14.4,
+    "psqi": 7.0,
+    "age": 27.0
+   }
+  },
+  "User_3": {
+   "rest_hr": 53.9,
+   "hrv": 51.0,
+   "sleep_h": 5.85,
+   "sleep_eff": 79.2,
+   "activity": 17288,
+   "stress": 1.47,
+   "mood": 5.0,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 98.0,
+    "actigraph_hours": 24.7,
+    "stai1": 27.0,
+    "stai2": 27.0,
+    "daily_stress_dsi": 11.0,
+    "panas_pos_mean": 32.6,
+    "panas_neg_mean": 11.4,
+    "psqi": 8.0,
+    "age": 34.0
+   }
+  },
+  "User_4": {
+   "rest_hr": 52.3,
+   "hrv": 57.8,
+   "sleep_h": 5.32,
+   "sleep_eff": 85.5,
+   "activity": 11724,
+   "stress": 1.53,
+   "mood": 4.14,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 78.4,
+    "actigraph_hours": 24.5,
+    "stai1": 28.0,
+    "stai2": 40.0,
+    "daily_stress_dsi": 10.0,
+    "panas_pos_mean": 24.8,
+    "panas_neg_mean": 13.4,
+    "psqi": 4.0,
+    "age": 27.0
+   }
+  },
+  "User_5": {
+   "rest_hr": 59.1,
+   "hrv": 40.1,
+   "sleep_h": 5.8,
+   "sleep_eff": 85.7,
+   "activity": 7942,
+   "stress": 3.27,
+   "mood": 4.06,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 97.4,
+    "actigraph_hours": 24.6,
+    "stai1": 54.0,
+    "stai2": 47.0,
+    "daily_stress_dsi": 41.0,
+    "panas_pos_mean": 28.8,
+    "panas_neg_mean": 18.2,
+    "psqi": 8.0,
+    "age": 25.0
+   }
+  },
+  "User_6": {
+   "rest_hr": 64.6,
+   "hrv": 59.0,
+   "sleep_h": 5.55,
+   "sleep_eff": 84.3,
+   "activity": 11918,
+   "stress": 1.8,
+   "mood": 4.04,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 97.2,
+    "actigraph_hours": 23.8,
+    "stai1": 32.0,
+    "stai2": 47.0,
+    "daily_stress_dsi": 41.0,
+    "panas_pos_mean": 24.2,
+    "panas_neg_mean": 13.8,
+    "psqi": 9.0,
+    "age": 27.0
+   }
+  },
+  "User_7": {
+   "rest_hr": 55.2,
+   "hrv": 28.9,
+   "sleep_h": 5.7,
+   "sleep_eff": 75.3,
+   "activity": 11423,
+   "stress": 1.87,
+   "mood": 3.1,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 99.7,
+    "actigraph_hours": 24.1,
+    "stai1": 33.0,
+    "stai2": 0.0,
+    "daily_stress_dsi": 69.0,
+    "panas_pos_mean": 14.4,
+    "panas_neg_mean": 13.4,
+    "psqi": 7.0,
+    "age": 25.0
+   }
+  },
+  "User_8": {
+   "rest_hr": 54.3,
+   "hrv": null,
+   "sleep_h": 5.6,
+   "sleep_eff": 80.8,
+   "activity": null,
+   "stress": 1.8,
+   "mood": 4.58,
+   "methods": {
+    "rest_hr": "p5 of 1-min median HR over the whole recording (no usable sleep record)",
+    "activity": "not used: actigraph spans 744.0 h, expected ~24 h"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 96.4,
+    "actigraph_hours": 744.0,
+    "stai1": 32.0,
+    "stai2": 39.0,
+    "daily_stress_dsi": 74.0,
+    "panas_pos_mean": 27.2,
+    "panas_neg_mean": 11.4,
+    "psqi": 3.0,
+    "age": 40.0
+   }
+  },
+  "User_9": {
+   "rest_hr": 52.6,
+   "hrv": null,
+   "sleep_h": 9.63,
+   "sleep_eff": 91.7,
+   "activity": null,
+   "stress": 2.07,
+   "mood": 4.56,
+   "methods": {
+    "rest_hr": "p5 of 1-min median HR over the whole recording (no usable sleep record)",
+    "activity": "not used: actigraph spans 744.0 h, expected ~24 h"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 99.6,
+    "actigraph_hours": 744.0,
+    "stai1": 36.0,
+    "stai2": 41.0,
+    "daily_stress_dsi": 38.0,
+    "panas_pos_mean": 28.8,
+    "panas_neg_mean": 13.2,
+    "psqi": 9.0,
+    "age": 20.0
+   }
+  },
+  "User_10": {
+   "rest_hr": 56.4,
+   "hrv": 56.4,
+   "sleep_h": 4.12,
+   "sleep_eff": 75.1,
+   "activity": 13985,
+   "stress": 2.27,
+   "mood": 3.26,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 96.7,
+    "actigraph_hours": 24.3,
+    "stai1": 39.0,
+    "stai2": 46.0,
+    "daily_stress_dsi": 14.0,
+    "panas_pos_mean": 22.6,
+    "panas_neg_mean": 20.0,
+    "psqi": 4.0,
+    "age": 27.0
+   }
+  },
+  "User_11": {
+   "rest_hr": 56.2,
+   "hrv": null,
+   "sleep_h": null,
+   "sleep_eff": null,
+   "activity": 19536,
+   "stress": 2.07,
+   "mood": 3.72,
+   "methods": {
+    "rest_hr": "p5 of 1-min median HR over the whole recording (no usable sleep record)"
+   },
+   "raw": {
+    "beats_kept_pct": 99.2,
+    "actigraph_hours": 24.2,
+    "stai1": 36.0,
+    "stai2": 43.0,
+    "daily_stress_dsi": 17.0,
+    "panas_pos_mean": 20.8,
+    "panas_neg_mean": 13.6,
+    "psqi": 7.0,
+    "age": 27.0
+   }
+  },
+  "User_12": {
+   "rest_hr": 53.3,
+   "hrv": 41.6,
+   "sleep_h": 5.72,
+   "sleep_eff": 94.2,
+   "activity": 13558,
+   "stress": 1.47,
+   "mood": 4.12,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 99.8,
+    "actigraph_hours": 23.8,
+    "stai1": 27.0,
+    "stai2": 33.0,
+    "daily_stress_dsi": 48.0,
+    "panas_pos_mean": 27.2,
+    "panas_neg_mean": 16.0,
+    "psqi": 4.0,
+    "age": 27.0
+   }
+  },
+  "User_13": {
+   "rest_hr": 56.6,
+   "hrv": 40.0,
+   "sleep_h": 4.12,
+   "sleep_eff": 76.5,
+   "activity": 10840,
+   "stress": 1.67,
+   "mood": 3.9,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 99.7,
+    "actigraph_hours": 23.4,
+    "stai1": 30.0,
+    "stai2": 43.0,
+    "daily_stress_dsi": 27.0,
+    "panas_pos_mean": 21.2,
+    "panas_neg_mean": 12.2,
+    "psqi": 4.0,
+    "age": 25.0
+   }
+  },
+  "User_14": {
+   "rest_hr": 55.5,
+   "hrv": 30.6,
+   "sleep_h": 6.23,
+   "sleep_eff": 90.8,
+   "activity": 8428,
+   "stress": 2.87,
+   "mood": 3.64,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 99.8,
+    "actigraph_hours": 23.7,
+    "stai1": 48.0,
+    "stai2": 45.0,
+    "daily_stress_dsi": 26.0,
+    "panas_pos_mean": 18.6,
+    "panas_neg_mean": 12.2,
+    "psqi": 2.0,
+    "age": 27.0
+   }
+  },
+  "User_15": {
+   "rest_hr": 56.3,
+   "hrv": 76.1,
+   "sleep_h": 3.93,
+   "sleep_eff": 89.4,
+   "activity": 14541,
+   "stress": 3.13,
+   "mood": 4.08,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 91.9,
+    "actigraph_hours": 25.5,
+    "stai1": 52.0,
+    "stai2": 42.0,
+    "daily_stress_dsi": 35.0,
+    "panas_pos_mean": 26.6,
+    "panas_neg_mean": 15.8,
+    "psqi": 5.0,
+    "age": 24.0
+   }
+  },
+  "User_16": {
+   "rest_hr": 47.2,
+   "hrv": 68.1,
+   "sleep_h": 5.65,
+   "sleep_eff": 74.3,
+   "activity": 10934,
+   "stress": 1.6,
+   "mood": 4.1,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 98.1,
+    "actigraph_hours": 25.6,
+    "stai1": 29.0,
+    "stai2": 41.0,
+    "daily_stress_dsi": 32.0,
+    "panas_pos_mean": 26.0,
+    "panas_neg_mean": 15.0,
+    "psqi": 5.0,
+    "age": 27.0
+   }
+  },
+  "User_17": {
+   "rest_hr": 54.2,
+   "hrv": 75.2,
+   "sleep_h": 5.1,
+   "sleep_eff": 86.9,
+   "activity": 11667,
+   "stress": 1.93,
+   "mood": 4.32,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 97.3,
+    "actigraph_hours": 25.5,
+    "stai1": 34.0,
+    "stai2": 49.0,
+    "daily_stress_dsi": 20.0,
+    "panas_pos_mean": 24.4,
+    "panas_neg_mean": 11.2,
+    "psqi": 3.0,
+    "age": 24.0
+   }
+  },
+  "User_18": {
+   "rest_hr": 52.7,
+   "hrv": 59.5,
+   "sleep_h": 5.03,
+   "sleep_eff": 84.4,
+   "activity": 7851,
+   "stress": 1.87,
+   "mood": 3.46,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 95.6,
+    "actigraph_hours": 24.0,
+    "stai1": 33.0,
+    "stai2": 44.0,
+    "daily_stress_dsi": 32.0,
+    "panas_pos_mean": 20.6,
+    "panas_neg_mean": 16.0,
+    "psqi": 5.0,
+    "age": 0.0
+   }
+  },
+  "User_19": {
+   "rest_hr": 53.0,
+   "hrv": 63.1,
+   "sleep_h": 5.67,
+   "sleep_eff": 74.1,
+   "activity": 10496,
+   "stress": 1.4,
+   "mood": 3.68,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 98.8,
+    "actigraph_hours": 23.8,
+    "stai1": 26.0,
+    "stai2": 35.0,
+    "daily_stress_dsi": 31.0,
+    "panas_pos_mean": 20.2,
+    "panas_neg_mean": 13.4,
+    "psqi": 4.0,
+    "age": 22.0
+   }
+  },
+  "User_20": {
+   "rest_hr": 50.5,
+   "hrv": 59.0,
+   "sleep_h": 6.4,
+   "sleep_eff": 88.1,
+   "activity": 9131,
+   "stress": 2.6,
+   "mood": 3.48,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 98.8,
+    "actigraph_hours": 23.6,
+    "stai1": 44.0,
+    "stai2": 42.0,
+    "daily_stress_dsi": 22.0,
+    "panas_pos_mean": 26.6,
+    "panas_neg_mean": 21.8,
+    "psqi": 5.0,
+    "age": 29.0
+   }
+  },
+  "User_21": {
+   "rest_hr": 56.7,
+   "hrv": 39.4,
+   "sleep_h": 4.55,
+   "sleep_eff": 91.9,
+   "activity": 9563,
+   "stress": 2.2,
+   "mood": 3.9,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 99.6,
+    "actigraph_hours": 23.1,
+    "stai1": 38.0,
+    "stai2": 35.0,
+    "daily_stress_dsi": 30.0,
+    "panas_pos_mean": 21.2,
+    "panas_neg_mean": 12.2,
+    "psqi": 4.0,
+    "age": 28.0
+   }
+  },
+  "User_22": {
+   "rest_hr": 47.0,
+   "hrv": 51.9,
+   "sleep_h": 5.07,
+   "sleep_eff": 84.9,
+   "activity": 13669,
+   "stress": 2.4,
+   "mood": 3.74,
+   "methods": {
+    "rest_hr": "p10 of 1-min median HR while in bed",
+    "hrv": "median 5-min RMSSD while in bed"
+   },
+   "raw": {
+    "sleep_bouts": 1,
+    "beats_kept_pct": 99.7,
+    "actigraph_hours": 23.4,
+    "stai1": 41.0,
+    "stai2": 48.0,
+    "daily_stress_dsi": 41.0,
+    "panas_pos_mean": 24.0,
+    "panas_neg_mean": 16.6,
+    "psqi": 5.0,
+    "age": 32.0
+   }
+  }
+ }
+}

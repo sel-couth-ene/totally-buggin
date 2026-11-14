@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Body Atlas: point at your body to explore anatomy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+</head>
+<body class="cam-idle">
+
+  <header class="top">
+    <h1 class="brand">Body Atlas</h1>
+    <p class="lede">Point at a part of your body and the model zooms to it.</p>
+    <button id="camToggle" class="btn" type="button">Close camera</button>
+  </header>
+
+  <main class="layout">
+
+    <!-- LEFT: 3D body -->
+    <section class="stage" aria-label="3D human body">
+      <div id="viewport" class="viewport"></div>
+
+      <div class="stage-tools">
+        <button id="resetView" class="btn ghost" type="button">Full body</button>
+        <span class="hint">Drag to rotate, scroll to zoom, click a part to learn about it.</span>
+      </div>
+
+      <article id="info" class="info" aria-live="polite">
+        <div id="infoEmpty" class="info-empty">
+          <h2>Pick a body part</h2>
+          <p>Point at yourself with the camera, or click the model. Details appear here.</p>
+        </div>
+        <div id="infoBody" class="info-body" hidden>
+          <header class="info-head">
+            <div>
+              <h2 id="infoTitle"></h2>
+              <p id="infoRegion" class="info-region"></p>
+            </div>
+            <button id="infoBack" class="btn ghost small" type="button">Full body</button>
+          </header>
+          <p id="infoSummary" class="info-summary"></p>
+          <h3>Key structures</h3>
+          <ul id="infoStructures"></ul>
+          <h3>What it does</h3>
+          <p id="infoFunction"></p>
+          <p id="infoFact" class="info-fact"></p>
+        </div>
+      </article>
+    </section>
+
+    <!-- RIGHT: camera + tracking -->
+    <section id="camPanel" class="cam" aria-label="Camera tracking">
+      <div class="cam-frame">
+        <video id="video" class="hidden-video" playsinline muted></video>
+        <canvas id="overlay" class="overlay"></canvas>
+
+        <div id="camGate" class="gate">
+          <p id="gateMsg">The camera stays in your browser. Nothing is uploaded.</p>
+          <button id="startCam" class="btn solid" type="button">Start camera</button>
+        </div>
+
+        <div id="chips" class="chips" hidden>
+          <span id="chipFps" class="chip">0 fps</span>
+          <span id="chipState" class="chip chip-state">Looking for you</span>
+        </div>
+      </div>
+
+      <div class="cam-controls">
+        <fieldset>
+          <legend>Show on camera</legend>
+          <label><input type="checkbox" id="optBody" checked> Body joints</label>
+          <label><input type="checkbox" id="optHands" checked> Hands</label>
+          <label><input type="checkbox" id="optFace" checked> Face mesh</label>
+        </fieldset>
+        <label class="auto"><input type="checkbox" id="optAuto" checked> Return to full body after you stop pointing</label>
+      </div>
+
+      <dl class="guide">
+        <div>
+          <dt>Point</dt>
+          <dd>Index finger out, other fingers curled. Either hand. Touch the body part, or aim along your finger.</dd>
+        </div>
+        <div>
+          <dt>Pinch and drag</dt>
+          <dd>Touch thumb to index finger and move your hand to rotate the model.</dd>
+        </div>
+        <div>
+          <dt>Pinch with both hands</dt>
+          <dd>Move your hands apart to zoom in, closer together to zoom out.</dd>
+        </div>
+      </dl>
+    </section>
+
+  </main>
+
+  <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

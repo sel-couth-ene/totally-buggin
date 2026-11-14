@@ -1,0 +1,55 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #fafafa;
+  color: #222;
+  margin: 0;
+}
+
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.reading {
+  font-size: 1.5rem;
+}
+
+#bpm {
+  font-size: 4rem;
+  font-weight: bold;
+  color: crimson;
+}
+
+#status {
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+#status.ok {
+  color: #2a8a3e;
+}
+
+#status.bad {
+  color: #c0392b;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background: crimson;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #b00f30;
+}
+
+button:disabled {
+  background: #bbb;
+  cursor: wait;
+}
