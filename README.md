@@ -1,8 +1,24 @@
+**Live demo (nothing to install): https://totally-buggin-astro-not-okay.vercel.app/**
+
+Open it in Chrome or Edge on a computer and allow the camera. No camera? Use the simulated person: [`/?sim=script`](https://totally-buggin-astro-not-okay.vercel.app/?sim=script) plays a scripted demo and [`/?sim=idle`](https://totally-buggin-astro-not-okay.vercel.app/?sim=idle) lets you use the mouse. More in [Try it online](#try-it-online) below.
+
 # Crew health check: Space Apps 2026 demo
 
 A camera-first health check for astronauts. Stand in front of the camera and a see-through 3D body (skin, skeleton, organs and a beating heart) follows you like a filter, coloured by how each part of you is doing. Point at a body part and hold to see what's going on, in plain words, with what to do about it. Finishing the suggested exercises earns points for 3D animal companions that live at the bottom of the screen; you pet them, pick them up, feed them and give them toys.
 
-It runs **fully offline** on one laptop. This is a hackathon prototype, not a medical device.
+You can run it yourself **fully offline** on one laptop, and it is also deployed online as a demo (link above). This is a hackathon prototype, not a medical device.
+
+## Try it online
+
+The demo at **https://totally-buggin-astro-not-okay.vercel.app/** is the same app, hosted on Vercel.
+
+* Use **Chrome or Edge on a computer**. The site is served over HTTPS, so the camera works without any setup; allow it when asked.
+* The first load downloads the tracking models (about 21 MB) from the same site, so give it a few seconds. Tracking runs **in your browser**: your camera video is not uploaded, the page only sends the app's small data requests.
+* No camera, or want a hands-off demo? Add `?sim=script` or `?sim=idle` to the address, and see *Demo modes* below for the other options (`?astronaut=brandt`, and so on).
+* What is different from running it yourself:
+  * **No live pulse sensor.** The Arduino plugs into the computer that runs the server, so the pulse card does not appear online.
+  * **Temporary data.** A serverless host only lets the app write to temporary storage, so the database lives there (`astro/db.py` switches to it automatically when it sees `VERCEL` or `AWS_LAMBDA_FUNCTION_NAME`; set `ASTRO_DB` to choose a path). The mission clock, points and companions can reset when the server restarts, and everyone who opens the demo shares the same data, so another visitor's check-in or points may show up.
+  * **No background thread.** Device data is brought up to date each time the page asks for updates (every 5 s), which is what keeps the online demo live.
 
 ## Run it
 
@@ -15,8 +31,8 @@ python app.py
 Open **http://127.0.0.1:5000** in Chrome or Edge and allow the camera.
 
 * On a Mac, use `127.0.0.1`, not `localhost`: macOS's AirPlay Receiver also listens on port 5000 and answers `localhost` with "403 Forbidden".
-* The first run creates `instance/astro_health.db` with about 4.5 months of mission history (about a second). Delete that file after changing a simulator or baseline, so it is rebuilt.
-* Nothing is loaded from the internet. The tracking library, its WASM runtime and the font are in `static/vendor`; the three tracking models (about 21 MB) must be in `static/models/`. If they're missing, the page says so and switches to the simulated person. Fetch them once with:
+* The first run creates `instance/astro_health.db` with about 4.5 months of mission history (about a second); on a serverless host it goes to temporary storage instead. Delete that file after changing a simulator or baseline, so it is rebuilt.
+* When you run it yourself, nothing is loaded from the internet. The tracking library, its WASM runtime and the font are in `static/vendor`; the three tracking models (about 21 MB) must be in `static/models/`. If they're missing, the page says so and switches to the simulated person. Fetch them once with:
 
 ```bash
 python tools/download_models.py      # the only step that needs internet
@@ -159,6 +175,14 @@ static/js/pets.js       companion behaviour (no drawing; runs in Node for tests)
 static/js/pets3d.js     the 3D companions, outfits, toys, snacks, shop previews
 static/js/pulse.js      live pulse card
 static/js/sim.js        simulated person for demo and test modes
+static/js/api.js        fetch wrappers for the server routes
+static/js/exercises.js  rep counting for the suggested exercises
+static/js/geometry.js   landmark indices, smoothing and shared geometry helpers
+static/js/regions.js    body regions in screen space, for pointing at your own body
+static/js/trend.js      small trend charts with the person's usual range
+static/css/app.css      the crew-procedure-card styling
+templates/index.html    the single page
+heart_rate_sensor_code/ Arduino sketch for the pulse sensor (wiring in its README)
 tools/                  NASA OSDR, MMASH and model download scripts
 data/                   real data (see data/README.md)
 tests/                  backend and front-end logic tests
@@ -169,9 +193,11 @@ To connect a real device, write a function that returns `(readings, events)` for
 ## Tests
 
 ```bash
-python -m pytest tests            # API, sync, live updates, daily check-in, game, pulse analysis and use
-node tests/js/logic.test.mjs      # gestures, hit testing, rep counters, companion behaviour
+python tests/test_backend.py      # API, sync, live updates, daily check-in, game, pulse analysis and use (24 tests, nothing extra to install)
+node tests/js/logic.test.mjs      # gestures, hit testing, rep counters, companion behaviour (28 tests)
 ```
+
+If you have pytest installed, `python -m pytest tests` runs the backend tests too.
 
 ## Known limits
 
@@ -180,3 +206,4 @@ node tests/js/logic.test.mjs      # gestures, hit testing, rep counters, compani
 * Most chest charts are daily summaries, so during a demo today's point moves rather than new points appearing.
 * On narrow windows (about 1024 px) the companions can overlap the focus model's feet.
 * The pulse analysis was checked against made-up waves and `PULSE=sim`, not against a clinical device.
+* The online demo has no pulse sensor and keeps its data in temporary storage that is shared between visitors and can reset (see *Try it online*).
